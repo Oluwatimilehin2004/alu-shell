@@ -1,2 +1,2 @@
 #!/bin/bash
-i=0; while IFS= read -r line; do (( i % 2 == 0 )) && echo "$line"; ((i++)); done
+grep -n . | grep '^[0-9]*[13579]:'| cut -d: -f2-
