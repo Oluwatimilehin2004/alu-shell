@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Convert WATER from base-water to decimal
+water_decimal=$(echo "$WATER" | tr 'water' '01234' | awk '{print "ibase=5;" $1}' | bc)
+
+# Convert STIR from base-stir to decimal
+stir_decimal=$(echo "$STIR" | tr 'stir' '0123' | awk '{print "ibase=4;" $1}' | bc)
+
+# Add the two decimal numbers
+sum_decimal=$(( water_decimal + stir_decimal ))
+
+# Convert the sum to base-bestchol and print
+echo "$sum_decimal" | awk '{print "obase=8;" $1}' | bc | tr '01234567' 'bestchol'
+
