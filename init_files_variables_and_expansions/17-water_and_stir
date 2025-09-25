@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(( $(echo $WATER | tr -d '.' | tr 'water' '01234') + $(echo $STIR | tr -d '.' | tr 'stir' '0123') )) | tr '01234567' 'bestchol'
+echo "WATER=$WATER STIR=$STIR" | awk 'BEGIN{wb="water";sb="stir";bb="bestchol"}function cv(n,b,l,r,p,i,c,d,j){l=length(b);r=0;p=1;for(i=length(n);i>0;i--){c=substr(n,i,1);d=0;for(j=1;j<=l;j++)if(substr(b,j,1)==c){d=j-1;break}r=r+d*p;p=p*l}return r}function dc(n,b,l,r,s){l=length(b);if(n==0)return substr(b,1,1);r="";while(n>0){s=substr(b,(n%l)+1,1);r=s r;n=int(n/l)}return r}{print dc(cv(ENVIRON["WATER"],wb)+cv(ENVIRON["STIR"],sb),bb)}'
