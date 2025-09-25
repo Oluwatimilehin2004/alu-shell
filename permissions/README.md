@@ -1,1 +1,1 @@
-This is a dir for permission operations
+This is the section about shell permissions
